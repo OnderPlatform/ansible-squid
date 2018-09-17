@@ -4,3 +4,8 @@
     name: "{{ squid_package }}"
     state: "present"
   become: true
+
+- name: debian | install packages for generate password
+  apt:
+    name: python-passlib
+    state: present

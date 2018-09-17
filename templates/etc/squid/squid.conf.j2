@@ -1,5 +1,12 @@
 # {{ ansible_managed }}
 
+# AUTH
+{% if squid_auth_basic_enable %}
+{%   for item in squid_auth_basic %}
+auth_param basic {{ item }}
+{%   endfor %}
+{% endif %}
+
 # ACLS
 {% if squid_acl is defined and squid_acl != [] %}
 {%   for item in squid_acl %}

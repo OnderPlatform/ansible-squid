@@ -1,6 +1,19 @@
 ---
 # defaults file for ansible-squid
 
+squid_auth_basic_enable: false
+# squid_auth_basic_passwd_file: /etc/squid3/passwd
+# squid_auth_basic_users:
+#   - login: user
+#     password: 123
+
+# squid_auth_basic:
+#   - "program /usr/lib/squid3/ncsa_auth {{ squid_auth_basic_passwd_file }}"
+#   - "children 5"
+#   - "realm Squid proxy-caching web server"
+#   - "credentialsttl 2 hours"
+#   - "casesensitive off"
+
 # acl aclname acltype argument
 squid_acl:
   - name: 'SSL_ports'
@@ -9,6 +22,9 @@ squid_acl:
   - name: 'CONNECT'
     type: 'method'
     arg: 'CONNECT'
+  # - name: 'auth'
+  #   type: 'proxy_auth'
+  #   arg: 'REQUIRED'
 
 # Adapt to list your (internal) IP networks from where browsing
 # should be allowed
@@ -62,6 +78,9 @@ squid_cache_peer: []
 squid_cache_peering: false
 
 squid_http_access:
+  # - action: 'deny'
+  #   acl:
+  #     - '!auth'
   - action: 'deny'
     acl:
       - '!Safe_ports'

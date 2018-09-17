@@ -9,6 +9,9 @@
 - include: redhat.yml
   when: ansible_os_family == "RedHat"
 
+- include: config_auth_basic.yml
+  when: squid_auth_basic_enable|bool
+
 - include: config_squid.yml
 
 - include: config_squid_transparent_proxy.yml

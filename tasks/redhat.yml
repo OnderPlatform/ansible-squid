@@ -5,3 +5,8 @@
     state: "present"
   become: true
   when: ansible_distribution != "Fedora"
+
+- name: redhat | install packages for generate password
+  yum:
+    name: python-passlib
+    state: present

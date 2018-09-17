@@ -1,0 +1,11 @@
+---
+
+- name: config_auth_basic | create file
+  htpasswd:
+    path: "{{ squid_auth_basic_passwd_file }}"
+    name: "{{ item.name }}"
+    password: "{{ item.password }}"
+    mode: 0644
+  notify: "restart {{ squid_service }}"
+  with_items:
+    - "{{ squid_auth_basic_users }}"
