@@ -4,7 +4,7 @@
 squid_auth_basic_enable: false
 # squid_auth_basic_passwd_file: /etc/squid3/passwd
 # squid_auth_basic_users:
-#   - login: user
+#   - name: user
 #     password: 123
 
 # squid_auth_basic:
